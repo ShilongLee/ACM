@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper  catchtap="onSwiperTap"
+      indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px"
+        next-margin="{{nextMargin}}px" indicator-active-color="#FF8000" indicator-color="#87CEFA">
+        <block  wx:key="*this">
+          <swiper-item>
+            <image class="image_1" src="{{background[0]}}" data-id="1"></image>
+          </swiper-item>
+          <swiper-item>
+            <image class="image_1" src="{{background[1]}}" data-id="2"></image>
+          </swiper-item>
+          <swiper-item>
+            <image class="image_1" src="{{background[2]}}" data-id="3"></image>
+          </swiper-item>
+          <swiper-item>
+            <image class="image_1" src="{{background[3]}}" data-id="4"></image>
+          </swiper-item>
+          <swiper-item>
+            <image class="image_1" src="{{background[4]}}" data-id="5"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view bindtap="goDetail" data-id="{{item}}" class="list-item" wx:for="{{List}}" wx:key="id">
+      <view class="img-bar">
+        <image class="list-img" src="{{item.picUrl}}" mode="widthFix"></image>
+      </view>
+      <view class="info-bar">
+        <view><text class="info-barT"></text>{{item.title}}</view>
+        <text class="info-barD">{{item.ctime}}</text>
+      </view>
+    </view>
+  </view>
+</view>

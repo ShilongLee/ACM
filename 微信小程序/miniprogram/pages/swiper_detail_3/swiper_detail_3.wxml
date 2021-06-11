@@ -1,0 +1,14 @@
+<view class="img-bar">
+  <image src="{{picurl}}" class="dtilpic" mode="widthFix"></image>
+</view>
+<view class="title">{{title}}</view>
+<view class="usrblock">
+  <image class="userpic" src="../../images/user.jpeg"></image>
+  <view class="usrmsg">
+    <view>testusr</view>
+    <view>{{time}}</view>
+  </view>
+</view>
+<view>{{content_1}}</view>
+<image class="img_2" src="../../images/swp_3.png" mode="widthFix"></image>
+<view>{{content_2}}</view>

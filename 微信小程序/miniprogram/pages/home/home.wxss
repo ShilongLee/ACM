@@ -1,0 +1,103 @@
+
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+.page-body{
+  padding-top: 60rpx;
+}
+
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+.page-section_center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-section:last-child{
+  margin-bottom: 0;
+}
+.page-section-gap{
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.page-section-spacing{
+  box-sizing: border-box;
+}
+.page-section-title{
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.page-section-gap .page-section-title{
+  padding-left: 0;
+  padding-right: 0;
+}
+.image_1{
+  width: 100%;
+  height: 100%;
+}
+
+.image_2{
+  width: 100%;
+  height: 100%;
+}
+
+button{
+  margin-bottom: 30rpx;
+}
+button:last-child{
+  margin-bottom: 0;
+}
+.page-section-title{
+  padding: 0;
+}
+.swiper-item{
+  display: block;
+  height: 150px;
+}
+.page-section-title{
+  margin-top: 60rpx;
+  position: relative;
+}
+.info{
+  position: absolute;
+  right: 0;
+  color: #353535;
+  font-size: 30rpx;
+}
+.page-foot{
+  margin-top: 50rpx;
+}
+
+.img-bar image{
+  width: 100%;
+}
+.info-bar{
+  flex-grow: 4;
+  width: 0;
+  margin-left: 10px;
+}
+.info-barT{
+  color: #000000;
+  font-size: 30rpx;
+}
+.info-barD{
+  color: #999999;
+  font-size: 25rpx;
+}
+.list-item{
+  padding:10px;
+  display: flex;
+}
+.img-bar{
+  flex-grow: 2;
+  width: 0;
+  /* overflow: hidden; */
+}

@@ -1,0 +1,26 @@
+page {
+  background-color: #FFF5EE;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+.title{
+  font-size: 42rpx;
+  
+}
+.dtilpic{
+  width: 100%;
+}
+.userpic{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.usrblock{
+  display: flex;
+  margin:20rpx 0rpx 40rpx 0rpx
+}
+.usrmsg{
+  margin:0rpx 0rpx 0rpx 40rpx
+}

@@ -115,7 +115,7 @@ bool bfs(int st)
 }
 bool blossom(int st)
 {
-    //每次进行初始化，因为要对每个点求增广路径，类似匈牙利算法的memset(vei,false,sizeof(vis));
+    //每次进行初始化，因为要对每个点求增广路径，类似匈牙利算法的memset(vis,false,sizeof(vis));
     memset(col, 0, sizeof(col)); //每个点的颜色，黑or白
     memset(pre, 0, sizeof(pre)); //每个点的前驱节点
     for (int i = 1; i <= n; ++i) //重置每个点的祖先(花根)

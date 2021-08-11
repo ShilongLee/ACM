@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Manacher
+{
+public:
+    string tmp;
+    vector<int> ans;
+    int longestPalindrome(string s)
+    {
+        int len = s.length();
+        //字符串预处理#a#b#c#c#b#a#
+        for (int i = 0; i < len; ++i)
+            tmp += '#', tmp += s[i];
+        tmp += '#';
+        int l = -1, r = -1, mid = -1, n = tmp.length();
+        ans.resize(n, 0);
+        for (int i = 0; i < n; ++i)
+        {
+            ans[i] = i >= r ? 1 : min(ans[mid * 2 - i], r - i);
+            while (i + ans[i] < n && i - ans[i] >= 0 && tmp[i + ans[i]] == tmp[i - ans[i]])
+                ans[i]++;
+            if (r < i + ans[i])
+                r = i + ans[i], mid = i;
+        }
+        int res = 0;
+        for (int i = 0; i < n; ++i)
+            if (ans[i] - 1 > res)
+                res = ans[i] - 1;
+        return res;
+    }
+};
+int main()
+{
+    return 0;
+}

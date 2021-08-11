@@ -1,0 +1,117 @@
+#include <iostream>
+#include<queue>
+#include<string.h>
+#include<unordered_map>
+using namespace std;
+
+struct node
+{
+    node *ext[26];
+    node *fail;
+    vector<int> exist;
+};
+unordered_map<string, int> mp;
+const int N = 1e6 + 5;
+string p[N];
+string t;
+int n;
+
+void insert(node *now, string word)
+{
+    int len = word.length();
+    for (int i = 0; i < len; ++i)
+    {
+        int ch = word[i] - 'a';
+        if (now->ext[ch] == NULL)
+            now->ext[ch] = new node();
+        now = now->ext[ch];
+    }
+    now->exist.push_back(len);
+}
+
+void build(node *root)
+{
+    //构建字典树
+    for (int i = 0; i < n; ++i)
+        insert(root, p[i]);
+
+    //初始化第一层节点
+    queue<node *> qu;
+    for (int i = 0; i < 26; ++i)
+        if (root->ext[i])
+        {
+            qu.push(root->ext[i]);
+            root->ext[i]->fail = root;
+        }
+
+    //层序遍历设fail指针
+    while (!qu.empty())
+    {
+        node *now = qu.front();
+        qu.pop();
+        for (int i = 0; i < 26; ++i)
+        {
+            if (now->ext[i])
+            {
+                node *tmp = now->ext[i];
+                node *fafail = now->fail;
+                while (fafail && !fafail->ext[i])
+                    fafail = fafail->fail;
+                if (!fafail)
+                    tmp->fail = root;
+                else
+                    tmp->fail = fafail->ext[i];
+                if (tmp->fail->exist.size())
+                {
+                    int siz = tmp->fail->exist.size();
+                    for (int i = 0; i < siz; ++i)
+                        tmp->exist.push_back(tmp->fail->exist[i]);
+                }
+                qu.push(tmp);
+            }
+        }
+    }
+}
+
+int query(node *root)
+{
+    int len = t.length(), ans = 0;
+    node *tmp = root;
+    for (int i = 0; i < len; ++i)
+    {
+        char ch = t[i] - 'a';
+        while (!tmp->ext[ch] && tmp->fail)
+            tmp = tmp->fail;
+        if (tmp->ext[ch])
+            tmp = tmp->ext[ch];
+        else
+            continue;
+        if (tmp->exist.size())
+            for (int j = 0; j < tmp->exist.size(); ++j)
+            {
+                int len = tmp->exist[j];
+                string res = t.substr(i - len + 1, len);
+                if (mp[res] > 0)
+                    ans++, mp[res]--;
+            }
+    }
+    return ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> p[i];
+        mp[p[i]]++;
+    }
+    cin >> t;
+    node *root = new node();
+    build(root);
+    cout << query(root) << endl;
+    return 0;
+}

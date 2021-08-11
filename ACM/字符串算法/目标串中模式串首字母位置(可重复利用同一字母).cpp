@@ -31,7 +31,7 @@ void KMP()
         if (j == len2)
         {
             s.insert(i - j + 1);
-            j = ext[j];
+            j = ext[j];      
         }
     }
 }

@@ -83,7 +83,7 @@ bool bfs(int st)
         for (int i = first[f]; ~i; i = ext[i])
         {
             int p = v[i];
-            if (!col[p]) //如果没被染过色(搜过)
+            if (!col[p]) //如果没被染过色(没搜过)
             {
                 pre[p] = f;   //记录前驱
                 if (!like[p]) //找到増广路终点，进行増广
@@ -94,11 +94,11 @@ bool bfs(int st)
                 else //被匹配了
                 {
                     col[p] = 2;       //染成白色
-                    col[like[p]] = 1; //和f匹配，不要这个点之前的匹配，让他再找一个
+                    col[like[p]] = 1; //推入其被匹配的点寻找增广路径
                     q.push(like[p]);  //让她之前的匹配再找一个
                 }
             }
-            else //被染色(搜过)
+            else //被染色(搜过)， 绕了一圈，仅发生在所有圈上的点外部无增广路经
             {
                 if (fin(f) == fin(p)) //已经是一朵花就不用缩点
                     continue;
